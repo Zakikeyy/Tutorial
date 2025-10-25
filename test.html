@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasar-Dasar Adobe Premiere Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        .content-section {
+            display: none;
+        }
+        #section-slide1 {
+            display: block;
+        }
+        .nav-link.active {
+            background-color: #FEE2E2; 
+            color: #DC2626;
+            font-weight: 600;
+        }
+    </style>
+    <!-- Chosen Palette: Adobe-Inspired Neutral -->
+    <!-- Application Structure Plan: Menggunakan struktur Sidebar Navigasi (kiri) dan Area Konten (kanan). Struktur ini dipilih karena materi aslinya adalah tutorial/panduan langkah demi langkah. Sidebar memungkinkan pengguna melihat semua topik sekaligus (seperti daftar isi) dan melompat ke bagian mana pun yang mereka butuhkan (navigasi non-linier), yang jauh lebih fungsional untuk pembelajaran daripada format slide linier. Interaksinya adalah: klik link di sidebar -> JavaScript menyembunyikan semua bagian konten -> JavaScript menampilkan bagian konten yang relevan dan menyorot link sidebar yang aktif. -->
+    <!-- Visualization & Content Choices: 
+        - Laporan: Slide 4 (4 Panel Utama) -> Goal: Mengatur/Informasi -> Viz: Diagram 2x2 menggunakan HTML/Tailwind Grid untuk mensimulasikan tata letak spasial Premiere Pro. -> Interaksi: Tidak ada, hanya visual. -> Justifikasi: Representasi visual tata letak lebih baik daripada daftar teks sederhana untuk pemahaman. -> Library: HTML/Tailwind.
+        - Laporan: Slide 6 (Alat Utama) -> Goal: Membandingkan -> Viz: Layout 2 kolom (Flex) untuk memisahkan 'Selection Tool' dan 'Razor Tool'. -> Interaksi: Tidak ada. -> Justifikasi: Perbandingan berdampingan yang jelas. -> Library: HTML/Tailwind.
+        - Laporan: Slide 7-10 (Langkah-langkah) -> Goal: Inform (How-to) -> Viz: Daftar berurutan (<ol>) di dalam kartu konten. -> Interaksi: Tidak ada. -> Justifikasi: Terbaik untuk instruksi prosedural. -> Library: HTML/Tailwind.
+        - Laporan: Slide 11 (Shortcuts) -> Goal: Referensi -> Viz: Daftar <ul> dengan <strong> untuk penekanan. -> Interaksi: Tidak ada. -> Justifikasi: Mudah dipindai. -> Library: HTML/Tailwind.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar Navigation -->
+        <nav class="w-64 flex-shrink-0 bg-white shadow-lg p-4 overflow-y-auto h-screen sticky top-0">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 px-2">Daftar Materi</h2>
+            <ul class="space-y-1">
+                <li><a href="#" class="nav-link active block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide1">Selamat Datang</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide2">Apa itu Premiere Pro?</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide3">Proyek & Sequence</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide4">Mengenal 4 Panel Utama</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide5">Langkah 1: Impor Media</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide6">Langkah 2: Editing Dasar</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide7">Langkah 3: Menambah Transisi</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide8">Langkah 4: Menambah Teks</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide9">Langkah 5: Mengatur Audio</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide10">Langkah 6: Ekspor Video</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide11">Tips & Shortcut</a></li>
+                <li><a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100" data-target="section-slide12">Penutup</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto h-screen">
+            
+            <!-- Slide 1: Selamat Datang -->
+            <section id="section-slide1" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Selamat Datang di Adobe Premiere Pro</h1>
+                <p class="text-lg md:text-xl text-gray-600">Panduan Pemula untuk Video Editing</p>
+                <div class="mt-6 border-t pt-6">
+                    <p class="text-gray-700">Selamat datang di panduan interaktif ini! Gunakan menu navigasi di sebelah kiri untuk memilih topik yang ingin Anda pelajari. Aplikasi ini dirancang untuk membantu Anda menemukan informasi spesifik dengan cepat, berbeda dari presentasi slide biasa. Mulailah dengan "Apa itu Premiere Pro?" atau langsung lompat ke langkah yang Anda butuhkan.</p>
+                </div>
+            </section>
+
+            <!-- Slide 2: Apa itu Adobe Premiere Pro? -->
+            <section id="section-slide2" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Apa itu Adobe Premiere Pro?</h2>
+                <p class="text-gray-700 mb-6">Bagian ini menjelaskan konsep dasar Premiere Pro. Ini adalah software standar industri yang digunakan untuk hampir semua jenis produksi video.</p>
+                <ul class="space-y-4 list-disc list-inside text-gray-700">
+                    <li><strong class="font-semibold text-gray-800">Definisi:</strong> Adobe Premiere Pro adalah software *video editing* profesional yang digunakan untuk mengedit dan memproduksi video.</li>
+                    <li><strong class="font-semibold text-gray-800">Standar Industri:</strong> Digunakan secara luas di industri film, televisi, dan konten web (seperti YouTube).</li>
+                    <li><strong class="font-semibold text-gray-800">Non-Linear Editing (NLE):</strong> Memungkinkan Anda mengedit klip video dalam urutan apa pun tanpa merusak file aslinya.</li>
+                    <li><strong class="font-semibold text-gray-800">Integrasi:</strong> Bagian dari Adobe Creative Cloud, sehingga terintegrasi mulus dengan Photoshop, After Effects, dan Audition.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 3: Proyek & Sequence -->
+            <section id="section-slide3" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Tampilan Awal: Proyek & Sequence</h2>
+                <p class="text-gray-700 mb-6">Saat Anda membuka Premiere Pro, ada dua hal utama yang harus dipahami: Proyek sebagai "kontainer" utama, dan Sequence sebagai "kanvas" editing Anda.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">1. Proyek (Project)</h3>
+                        <ul class="space-y-2 list-disc list-inside text-gray-700">
+                            <li>Anggap ini sebagai "kontainer" atau "folder" utama untuk *semua* materi Anda.</li>
+                            <li>Menyimpan file video, audio, gambar, judul, dan *sequence* Anda.</li>
+                            <li><strong class="font-medium">Cara Membuat:</strong> <code>File > New > Project...</code></li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">2. Sequence (Urutan)</h3>
+                        <ul class="space-y-2 list-disc list-inside text-gray-700">
+                            <li>Ini adalah "kanvas" atau *timeline* tempat Anda menyusun dan mengedit video.</li>
+                            <li>Setiap proyek bisa memiliki *banyak* sequence.</li>
+                            <li><strong class="font-medium">Cara Membuat:</strong> <code>File > New > Sequence...</code> (atau seret klip ke ikon 'New Item').</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Mengenal 4 Panel Utama (Workspace) -->
+            <section id="section-slide4" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Mengenal 4 Panel Utama (Workspace)</h2>
+                <p class="text-gray-700 mb-6">Antarmuka Premiere Pro (disebut *Workspace*) terdiri dari beberapa panel. Berikut adalah simulasi tata letak 4 panel yang paling penting.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-gray-300 rounded-lg p-4 bg-gray-50 min-h-[400px]">
+                    <div class="border-2 border-dashed border-gray-400 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-gray-800">2. Source Monitor (Kiri Atas)</h3>
+                        <p class="text-gray-700 mt-2">Tempat untuk meninjau (preview) klip *sebelum* Anda masukkan ke timeline. Berguna untuk memilih bagian terbaik dari sebuah klip.</p>
+                    </div>
+                    <div class="border-2 border-dashed border-gray-400 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-gray-800">3. Program Monitor (Kanan Atas)</h3>
+                        <p class="text-gray-700 mt-2">Menampilkan hasil editan Anda yang ada di *Timeline*. Ini adalah cerminan dari video akhir Anda.</p>
+                    </div>
+                    <div class="border-2 border-dashed border-gray-400 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-gray-800">1. Project Panel (Kiri Bawah)</h3>
+                        <p class="text-gray-700 mt-2">"Perpustakaan" Anda. Semua file (video, audio, gambar) yang Anda impor akan muncul di sini.</p>
+                    </div>
+                    <div class="border-2 border-dashed border-gray-400 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-gray-800">4. Timeline / Sequence (Bawah)</h3>
+                        <p class="text-gray-700 mt-2">"Jantung" dari proses editing. Di sinilah Anda menyusun, memotong, dan mengatur semua klip Anda.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Langkah 1: Impor Media -->
+            <section id="section-slide5" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Langkah 1: Impor Media</h2>
+                <p class="text-gray-700 mb-6">Anda tidak bisa mengedit jika tidak ada bahan. Impor adalah proses memasukkan file video, audio, atau gambar Anda ke dalam *Project Panel*.</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Cara Impor:</h3>
+                <ul class="space-y-3 text-gray-700">
+                    <li><strong class->Drag & Drop (Cara Cepat):</strong> Seret file dari folder komputer Anda langsung ke *Project Panel*.</li>
+                    <li><strong class->Klik Ganda:</strong> Klik ganda di area kosong *Project Panel*.</li>
+                    <li><strong class->Menu:</strong> <code>File > Import...</code></li>
+                    <li><strong class->Media Browser:</strong> Gunakan panel *Media Browser* untuk menavigasi folder di komputer Anda.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 6: Langkah 2: Editing Dasar di Timeline -->
+            <section id="section-slide6" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Langkah 2: Editing Dasar di Timeline</h2>
+                <p class="text-gray-700 mb-6">Setelah media ada di *Project Panel*, seret klip ke *Timeline*. Berikut adalah alat dan aksi dasar yang akan Anda gunakan.</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Alat Utama (Tools)</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="text-md font-semibold text-gray-800 mb-2"><span class="text-xl mr-2">V</span> Selection Tool (Panah)</h4>
+                        <p class="text-gray-700">Alat utama Anda. Digunakan untuk memilih, memindahkan, dan memanjangkan/memendekkan (trimming) klip.</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="text-md font-semibold text-gray-800 mb-2"><span class="text-xl mr-2">C</span> Razor Tool (Silet)</h4>
+                        <p class="text-gray-700">Digunakan untuk memotong klip menjadi dua bagian.</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Aksi Dasar</h3>
+                <ul class="space-y-3 list-disc list-inside text-gray-700">
+                    <li><strong>Memindahkan:</strong> Klik dan seret klip ke kiri atau kanan di timeline.</li>
+                    <li><strong>Trimming (Memotong):</strong> Arahkan kursor ke ujung klip (kiri atau kanan) hingga ikon berubah, lalu klik dan seret untuk memendekkan atau memanjangkannya.</li>
+                    <li><strong>Memotong (Cut):</strong> Gunakan *Razor Tool (C)* untuk mengklik di bagian klip yang ingin Anda potong.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 7: Langkah 3: Menambah Transisi -->
+            <section id="section-slide7" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Langkah 3: Menambah Transisi</h2>
+                <p class="text-gray-700 mb-6">Transisi adalah efek yang menghaluskan perpindahan dari satu klip ke klip berikutnya. Yang paling umum adalah 'Cross Dissolve'.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">Cara Mencari:</h3>
+                        <ol class="space-y-2 list-decimal list-inside text-gray-700">
+                            <li>Buka panel `Effects` (atau `Window > Effects`).</li>
+                            <li>Buka folder `Video Transitions`.</li>
+                            <li>Buka folder `Dissolve` (di sinilah `Cross Dissolve` berada).</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">Cara Menggunakan:</h3>
+                        <ol class="space-y-2 list-decimal list-inside text-gray-700">
+                            <li>Klik dan seret transisi yang Anda inginkan.</li>
+                            <li>Letakkan tepat di antara dua klip video di *Timeline*.</li>
+                            <li>Anda bisa mengatur durasi transisi dengan mengklik dan menyeret ujungnya.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 8: Langkah 4: Menambah Teks (Judul) -->
+            <section id="section-slide8" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Langkah 4: Menambah Teks (Judul)</h2>
+                <p class="text-gray-700 mb-6">Cara termudah menambahkan teks adalah menggunakan panel `Essential Graphics`.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">Cara Membuat Teks:</h3>
+                        <ol class="space-y-2 list-decimal list-inside text-gray-700">
+                            <li>Buka panel `Essential Graphics` (`Window > Essential Graphics`).</li>
+                            <li>Pilih `Type Tool` (Ikon T).</li>
+                            <li>Klik di mana saja pada *Program Monitor* (layar video Anda).</li>
+                            <li>Mulailah mengetik.</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">Cara Mengedit Teks:</h3>
+                        <ul class="space-y-2 list-disc list-inside text-gray-700">
+                            <li>Gunakan panel `Essential Graphics` (di tab `Edit`).</li>
+                            <li>Ubah font, ukuran, warna, bayangan, dan posisi teks.</li>
+                            <li>Sebuah *layer* teks baru akan otomatis muncul di *Timeline*.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 9: Langkah 5: Mengatur Audio Dasar -->
+            <section id="section-slide9" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Langkah 5: Mengatur Audio Dasar</h2>
+                <p class="text-gray-700 mb-6">Video yang bagus juga butuh audio yang jelas. Anda dapat mengatur volume langsung di timeline.</p>
+                
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Mengatur Volume Klip</h3>
+                <p class="text-gray-700 mb-4">Di *Timeline*, setiap klip audio memiliki garis putih horizontal (garis volume). Gunakan *Selection Tool (V)*, lalu seret garis putih tersebut ke atas (lebih keras) atau ke bawah (lebih pelan).</p>
+
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Audio Fade In / Fade Out (Keyframe)</h3>
+                <ol class="space-y-2 list-decimal list-inside text-gray-700">
+                    <li>Tahan tombol `Ctrl` (Windows) / `Cmd` (Mac).</li>
+                    <li>Klik pada garis volume untuk membuat titik (disebut *Keyframe*).</li>
+                    <li>Buat dua *keyframe* di awal atau akhir audio, lalu seret satu titik ke bawah untuk membuat efek *fade* (suara muncul/hilang perlahan).</li>
+                </ol>
+            </section>
+
+            <!-- Slide 10: Langkah 6: Ekspor Video (Render) -->
+            <section id="section-slide10" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Langkah 6: Ekspor Video (Render)</h2>
+                <p class="text-gray-700 mb-6">Setelah selesai mengedit, Anda perlu "menyatukan" semua editan menjadi satu file video baru (.mp4). Ini disebut Ekspor atau Render.</p>
+                
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">1. Buka Jendela Ekspor</h3>
+                <ul class="space-y-2 list-disc list-inside text-gray-700 mb-4">
+                    <li>Pastikan *Timeline* Anda aktif (klik di panel *Timeline*).</li>
+                    <li>Buka `File > Export > Media...`</li>
+                    <li>(Shortcut: `Ctrl + M` di Windows / `Cmd + M` di Mac).</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">2. Pengaturan Penting</h3>
+                <ul class="space-y-2 list-disc list-inside text-gray-700 mb-4">
+                    <li><strong>Format:</strong> Pilih `H.264`. Ini adalah format standar untuk web dan media sosial (menghasilkan file `.mp4`).</li>
+                    <li><strong>Preset:</strong> Pilih preset yang sesuai, misalnya: `Match Source - High Bitrate` (kualitas tinggi) atau `YouTube 1080p Full HD`.</li>
+                    <li><strong>Output Name:</strong> Klik pada nama file (teks biru) untuk memilih lokasi penyimpanan dan memberi nama file Anda.</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">3. Ekspor!</h3>
+                <p class="text-gray-700">Klik tombol <strong>Export</strong> di bagian bawah. Tunggu hingga proses rendering selesai.</p>
+            </section>
+
+            <!-- Slide 11: Tips Penting & Shortcut -->
+            <section id="section-slide11" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Tips Penting & Shortcut</h2>
+                <p class="text-gray-700 mb-6">Shortcut keyboard akan sangat mempercepat proses editing Anda.</p>
+                <ul class="space-y-3 text-gray-700">
+                    <li><strong class="font-semibold text-red-600 bg-red-100 px-2 py-1 rounded">SELALU SIMPAN!</strong>
+                        <br><span class="ml-4">Tekan `Ctrl + S` (Windows) / `Cmd + S` (Mac) sesering mungkin.</span></li>
+                    <li><strong class="font-semibold text-gray-800">Undo (Batal):</strong>
+                        <br><span class="ml-4">`Ctrl + Z` / `Cmd + Z`</span></li>
+                    <li><strong class="font-semibold text-gray-800">Putar & Berhenti (Playback):</strong>
+                        <br><span class="ml-4">`Spasi` (Spacebar)</span></li>
+                    <li><strong class="font-semibold text-gray-800">Navigasi J-K-L:</strong>
+                        <br><span class="ml-4">`J` = Mundur, `K` = Stop, `L` = Maju. Tekan berulang kali untuk mempercepat.</span></li>
+                    <li><strong class="font-semibold text-gray-800">Zoom Timeline:</strong>
+                        <br><span class="ml-4">Tekan tombol `+` (Plus) untuk memperbesar dan `-` (Minus) untuk memperkecil.</span></li>
+                </ul>
+            </section>
+            
+            <!-- Slide 12: Penutup -->
+            <section id="section-slide12" class="content-section bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Terima Kasih!</h2>
+                <p class="text-lg text-gray-700">Anda telah menyelesaikan dasar-dasarnya. Kunci untuk mahir adalah latihan. Buka Premiere Pro dan mulailah membuat proyek Anda sendiri.</p>
+                <h3 class="text-3xl font-bold text-gray-800 mt-6">Selamat Mengedit!</h3>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    
+                    const targetId = this.getAttribute('data-target');
+
+                    // Sembunyikan semua section
+                    contentSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+
+                    // Hapus kelas 'active' dari semua link
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+
+                    // Tampilkan section yang ditarget
+                    document.getElementById(targetId).style.display = 'block';
+
+                    // Tambah kelas 'active' ke link yang diklik
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
